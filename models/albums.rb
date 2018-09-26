@@ -28,4 +28,14 @@ attr_accessor :name_title, :genre
 
   end
 
+  def self.all()
+    sql = 'SELECT * FROM albums;'
+
+    order_hashes = SqlRunner.run(sql)
+
+    order_objects = order_hashes.map {|order_hash| Album.new(order_hash)}
+
+    return order_objects
+  end
+
 end
